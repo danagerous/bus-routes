@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>School District 8 - Bus Routes and Schedule</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta charset="UTF-8">
+
+<style type="text/css">
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: 'scroll'
+}
+
+#map_canvas {
+  height: 100%;
+  border: 1px solid black;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map_canvas {
+    height: 650px;
+  }
+}
+</style>
+
+<script type="text/javascript"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1Paa_gWGVcqOOzk2EtrXjzGzLu4O3tN4">
+</script>
+
+<script type="text/javascript">
+var map;
+var transSD8 = new google.maps.LatLng(49.491052,-117.304484);
+var kmlLayer = null;
+var currentLayer = null;
+var offices = [
+	['Nelson Office', 49.491052,-117.304484],
+	['Creston Office', 49.113219,-116.523563]
+];
+var base = "https://apps.danadiotte.com/bus-routes/kml/";
+var imgLyrs = [];
+imgLyrs[0] = new google.maps.KmlLayer(base + 'route_1am.kml',
+ {preserveViewport: true});
+
+function initialize() {
+	var myOptions = {
+	center: transSD8,
+	zoom: 16,
+	mapTypeId: google.maps.MapTypeId.ROADMAP,
+	mapTypeControl: true,
+	mapTypeControlOptions: {
+	style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+		}
+	};
+	map = new google.maps.Map(document.getElementById("map_canvas"),
+		myOptions);
+
+	kml();
+	setMarkers(map, offices);
+}	
+
+function setMarkers(map, locations) {
+	var image = new google.maps.MarkerImage('https://maps.google.com/mapfiles/ms/icons/bus.png',
+		new google.maps.Size(32, 32),
+		new google.maps.Point(0,0),
+		new google.maps.Point(0, 32));
+
+	var shape = {
+		coord: [1, 1, 1, 32, 32, 32, 32 , 1],
+		type: 'poly'
+	};
+	for (var i = 0; i < locations.length; i++) {
+		var office = locations[i];
+		var myLatLng = new google.maps.LatLng(office[1], office[2]);
+		var marker = new google.maps.Marker({
+		position: myLatLng,
+		map: map,
+		icon: image,
+		shape: shape,
+		title: office[0]
+		});
+	}
+}
+
+function kml() {
+	url = document.getElementById("kmlUrl").value;
+	clearLayer();
+	kmlLayer = new google.maps.KmlLayer(url, { map: map });
+	currentLayer = kmlLayer;
+}
+
+function clearLayer() {
+	if (currentLayer != null) {
+		currentLayer.setMap(null);
+		}
+}
+
+function toggleLayer(i) {
+  if(imgLyrs[i].getMap() === null) {
+    imgLyrs[i].setMap(map);
+  }
+  else {
+    imgLyrs[i].setMap(null);
+  }
+}
+
+function zoomToOverlay(nr, id) {
+ if(document.forms["f"].elements["box"][nr].checked) {
+   map.fitBounds(imgLyrs[i].bounds);
+ }
+ else {
+  document.forms["f"].elements["box"][nr].click();
+ }
+}
+
+</script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas" style="z-index:0"></div>
+<div style="position:absolute; left:10%; top:5px; z-index:1; scroll:auto">
+<form>
+<select id="kmlUrl" onclick="kml()">
+			<option selected="selected" value="https://apps.danadiotte.com/bus-routes/kml/sd8Boundary.kml">Please Select a Bus Route...</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_1am.kml">Route 1 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_1pm.kml">Route 1 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_2am.kml">Route 2 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_2pm.kml">Route 2 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_3am.kml">Route 3 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_3pm.kml">Route 3 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_4am.kml">Route 4 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_4pm.kml">Route 4 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_5am.kml">Route 5 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_5_1pm.kml">Route 5 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_6am.kml">Route 6 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_6pm.kml">Route 6 (pm)</option>
+			<!--<option  value="https://apps.danadiotte.com/bus-routes/kml/route_8aam.kml">Route 8a (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_8apm.kml">Route 8a (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_8bam.kml">Route 8b (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_8bpm.kml">Route 8b (pm)</option>-->
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_9am.kml">Route 9 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_9pm.kml">Route 9 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_10am.kml">Route 10 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_10pm.kml">Route 10 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_11am.kml">Route 11 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_11pm.kml">Route 11 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_12am.kml">Route 12 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_12pm.kml">Route 12 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_15am.kml">Route 15 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_15pm.kml">Route 15 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_16am.kml">Route 16 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_16pm.kml">Route 16 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_17am.kml">Route 17 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_17pm.kml">Route 17 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_18am.kml">Route 18 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_18pm.kml">Route 18 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_19am.kml">Route 19 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_19pm.kml">Route 19 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_20am.kml">Route 20 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_20pm.kml">Route 20 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_21am.kml">Route 21 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_21pm.kml">Route 21 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_22am.kml">Route 22 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_22pm.kml">Route 22 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_23am.kml">Route 23 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_23pm.kml">Route 23 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_24am.kml">Route 24 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_24pm.kml">Route 24 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_25am.kml">Route 25 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_25pm.kml">Route 25 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_26am.kml">Route 26 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_27am.kml">Route 27 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_27pm.kml">Route 27 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_28am.kml">Route 28 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_28pm.kml">Route 28 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_29am.kml">Route 29 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_30am.kml">Route 30 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_30pm.kml">Route 30 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_31am.kml">Route 31 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_31pm.kml">Route 31 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_32am.kml">Route 32 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_32pm.kml">Route 32 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_33am.kml">Route 33 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_33pm.kml">Route 33 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_34am.kml">Route 34 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_34pm.kml">Route 34 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_35am.kml">Route 35 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_35pm.kml">Route 35 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_36am.kml">Route 36 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_36pm.kml">Route 36 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_37am.kml">Route 37 (am)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/route_37pm.kml">Route 37 (pm)</option>
+			<option  value="https://apps.danadiotte.com/bus-routes/kml/sd8Boundary.kml">SD8 Boundary</option>
+</select>
+</form>
+</div>
+<!-- toggle button
+<div style="position:fixed; left:20px; top:550px; z-index:2">
+<a href=# onclick="toggleLayer(0)"><img id="layer0" height="30" width="30" border="0" src="www3.telus.net/dana/sd8/images/yak.bmp"/></a>
+</div>
+-->
+</body>
+</html>
