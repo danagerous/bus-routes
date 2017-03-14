@@ -108,18 +108,13 @@ html, body {
 </select>
 </form>
 </div>
-<!-- toggle button
-<div style="position:fixed; left:20px; top:550px; z-index:2">
-<a href=# onclick="toggleLayer(0)"><img id="layer0" height="30" width="30" border="0" src="www3.telus.net/dana/sd8/images/yak.bmp"/></a>
-</div>
--->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1Paa_gWGVcqOOzk2EtrXjzGzLu4O3tN4&callback=initMap"
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1Paa_gWGVcqOOzk2EtrXjzGzLu4O3tN4"
     async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 <script type="text/javascript">
 var map;
-var transSD8 = new google.maps.LatLng(49.491052,-117.304484);
 var kmlLayer = null;
 var currentLayer = null;
 var offices = [
@@ -128,10 +123,11 @@ var offices = [
 ];
 var base = "http://apps.danadiotte.com/bus-routes/kml/";
 var imgLyrs = [];
-imgLyrs[0] = new google.maps.KmlLayer(base + 'route_1am.kml',
+//imgLyrs[0] = new google.maps.KmlLayer(base + 'route_1am.kml',
  {preserveViewport: true});
 
 function initialize() {
+	var transSD8 = new google.maps.LatLng(49.491052,-117.304484);
 	var myOptions = {
 	center: transSD8,
 	zoom: 16,
