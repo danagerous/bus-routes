@@ -17,7 +17,7 @@
         </Style>
         		<NetworkLink>
 	        <Link>
-				<href>http://mapping.twigtech.ca/google/kml/sd8Boundary.kml</href>
+				<href>http://apps.danadiotte.com/bus-route/kml/sd8Boundary.kml</href>
 	    		<refreshMode>onInterval</refreshMode>
 	    		<refreshInterval>30</refreshInterval>
 	    		<viewRefreshMode>onStop</viewRefreshMode>
@@ -25,7 +25,7 @@
 	    	</Link>
     	</NetworkLink>
         <description><![CDATA[
-		<img src="http://mapping.twigtech.ca/google/images/dist8logo.bmp" width="75" height="75"><br>
+		<img src="http://apps.danadiotte.com/bus-route/images/dist8logo.bmp" width="75" height="75"><br>
 		]]>       
 		</description>
         <Polygon>

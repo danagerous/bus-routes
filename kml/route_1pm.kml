@@ -10,7 +10,7 @@
         </Style>
         <NetworkLink>
 	        <Link>
-				<href>http://mapping.twigtech.ca/google/kml/route_1pm.kml</href>
+				<href>http://apps.danadiotte.com/bus-route/kml/route_1pm.kml</href>
 	    		<refreshMode>onInterval</refreshMode>
 	    		<refreshInterval>30</refreshInterval>
 	    		<viewRefreshMode>onStop</viewRefreshMode>
@@ -24,7 +24,7 @@
 				<th align="left">Yahk/Kitchener</th>
 			</tr>
 		</table>
-		<img src="http://mapping.twigtech.ca/google/images/yak.bmp" width="50" height="50"><br>
+		<img src="http://apps.danadiotte.com/bus-route/images/yak.bmp" width="50" height="50"><br>
 		<div style="max-height:300px; width: 90%;min-width: 320px;overflow:auto; overflow-x:hidden">
         <table border="1" width="300 cellpadding="5" cellspacing="0">
 		    <tr bgcolor="#9CBCE2">
