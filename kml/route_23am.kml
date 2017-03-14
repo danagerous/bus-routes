@@ -27,7 +27,7 @@
 				<td align="left">Nelson - Mount Sentinel - Viewridge - Bonnington - Blewett - Trafalgar - South Nelson - Central - Hume - LV Rogers</td>
 			</tr>
 		</table>
-		<img src="http://apps.danadiotte.com/bus-routes/images/horse.bmp" width="50" height="50"><br>
+		<img src="../images/horse.bmp" width="50" height="50"><br>
 		<div style="max-height:300px; width: 90%;min-width: 320px;overflow:auto; overflow-x:hidden">
         <table border="1" width="300 cellpadding="5" cellspacing="0">
 		    <tr bgcolor="#9CBCE2">
