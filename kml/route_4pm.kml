@@ -13,7 +13,7 @@
         </Style>
 		<NetworkLink>
 	        <Link>
-				<href>http://apps.danadiotte.com/bus-route/kml/route_4pm.kml</href>
+				<href>http://apps.danadiotte.com/bus-routes/kml/route_4pm.kml</href>
 	    		<refreshMode>onInterval</refreshMode>
 	    		<refreshInterval>30</refreshInterval>
 	    		<viewRefreshMode>onStop</viewRefreshMode>
@@ -27,7 +27,7 @@
 				<th align="left">Arrowcreek/Erickson/Lakeview</th>
 			</tr>
 		</table>
-		<img src="./images/kangaroo.bmp" width="50" height="50"><br>
+		<img src="http://apps.danadiotte.com/bus-routes/images/kangaroo.bmp" width="50" height="50"><br>
 		<div style="max-height:300px; width: 90%;min-width: 320px;overflow:auto; overflow-x:hidden">
         <table border="1" width="300 cellpadding="5" cellspacing="0">
 		    <tr bgcolor="#9CBCE2">

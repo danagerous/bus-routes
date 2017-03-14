@@ -13,7 +13,7 @@
         </Style>
 		<NetworkLink>
 	        <Link>
-				<href>http://apps.danadiotte.com/bus-route/kml/route_8am.kml</href>
+				<href>http://apps.danadiotte.com/bus-routes/kml/route_8am.kml</href>
 	    		<refreshMode>onInterval</refreshMode>
 	    		<refreshInterval>30</refreshInterval>
 	    		<viewRefreshMode>onStop</viewRefreshMode>
