@@ -9,5 +9,5 @@ Some simple goals:
 
 - Make respsonsive UI
 - Move individual KML's to Google Fusion Tables as it is easier to manage. Re-use custom HTML for tables.
-- Add selection toggle school boundary and school locations
+- Add ability to toggle school boundary and school locations (data resides in Fusion Tables already).
 - Keep routes as a dropdown
