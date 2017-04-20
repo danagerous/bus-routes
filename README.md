@@ -3,8 +3,11 @@
 # bus-routes
 Kootenay Lake School District Bus Routes and Schedules
 
-This was my very first experience with web mapping. I have plans to:
+This was my very first experience with web mapping back in 2011. I want to update this application.
+
+Some simple goals:
 
 - Make respsonsive UI
-- Move individual KML's to Google Fusion Tables
+- Move individual KML's to Google Fusion Tables as it is easier to manage. Re-use custom HTML for tables.
 - Add selection toggle school boundary and school locations
+- Keep routes as a dropdown
