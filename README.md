@@ -5,4 +5,4 @@ Kootenay Lake School District Bus Routes and Schedules
 
 This was my very first experience with web mapping back in 2011. I want to update this application.
 
-See ENHANCEMENTS in the Issues tab.
+See the Issues tab for enhancements.
